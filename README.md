@@ -1,3 +1,7 @@
+#Warguide App
+
+Warguide app is a WIP app that will be used to display and create warhammer 40k army lists.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
