@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import data from './data/test-all-entries.json';
+import { ProfileCard, InputSelect } from './components/';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  state = {
+    selectedProfile: []
+  }
+
+  updateSelectedProfile = (id) => {
+    const profile = data.filter(profile => profile.id === id)
+    this.setState({selectedProfile: profile });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Select a profile</h1>
+        <InputSelect 
+          updateSelection={this.updateSelectedProfile.bind(this)} 
+          options={data} />
+        <ProfileCard profile={this.state.selectedProfile} />
+      </div>
+      
+    );
+  }
 }
 
 export default App;
